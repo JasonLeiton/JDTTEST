@@ -1,0 +1,47 @@
+aggregateType
+::=
+"{"("modifiers:["modifier"]")", ""isInterface:"value ", "("implementesTo:["implementsTo"]") ("nameString:""{"nameString)"}"("parameters:["parameter)"]"("members:["members)   "identifierName: {"nameString"}"  "]" "opensScope: ["opensScope"]"
+"}"
+
+
+members
+::=
+("member:{" ("fragments:[")   "identifierName: {"nameString"}"  "," ("definitionType: {" ("typename: {"nameString) "}")
+"]" ("[modifiers:{"modifier)"}" "}")
+
+modifiers::= 
+("{" "modifier:" valor "," id "}")*
+
+typeName::= 
+("{" "nameString:" value "," id "}")*
+
+
+variable::= 
+("{" "initialValue:" value "," id ("identifierName:" nameString "," id) "}"  ( "{" "definitionType:" typeName) "}")*
+
+
+operator::= 
+("{" "simbolo:" value "," id "}")*
+
+operand::= 
+("{" "identifierName:" nameString "," id "}")*
+
+condition::= 
+("{" operator ","  "{" ("leftOperand:" ("identifierName:" nameString "," id)  "}" )   "{" ("rightOperand:" value "," id  "}" )  "[" ( "extendOperand"  "]" )  "}")*
+
+forloop::= 
+("[" "initBody:" variable "[" "iterationBody:" operator "," operand "]"  condition ("{" "body:" body) "}" "]" )*
+
+
+returnType::= 
+("{" "typeName:" nameString "," id "}")*
+
+returnValue::= 
+( value "," id )*
+
+
+expression::= 
+("{" operator "{" ("leftOperand:" ("identifierName:" nameString "," id)  "}" )   "{" ("rightOperand:" value "," id  "}" ) "}")*
+
+if::= 
+("{" condition ("{" operator ) "}" "}" ) ("{" "thenBody:" subStatements "}")*
